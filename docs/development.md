@@ -26,7 +26,7 @@ bash scripts/test.sh
 5. `bash scripts/test.sh`；再看 `git diff`，不能只凭编译成功。
 6. 硬件测试通过后记录在 `docs/testing.md`，再决定发布。
 
-GitHub Actions 对 push/PR 自动编译与校验，输出 bin、VIA JSON 和构建清单；**绝不自动刷机**。工作流为只读权限，不使用个人凭据；首次云端运行仍需确认结果。Linux CI 使用系统 ARM 工具链，可能与本机 GCC 8 生成不同字节，云端成功不等于硬件验收。
+GitHub Actions 对 push/PR 自动编译与校验，输出 bin、VIA JSON 和构建清单；**绝不自动刷机**。工作流为只读权限，不使用个人凭据；首次云端运行已通过，详见测试记录。Linux CI 使用系统 ARM 工具链，可能与本机 GCC 8 生成不同字节，云端成功不等于硬件验收。
 
 ## 发布
 

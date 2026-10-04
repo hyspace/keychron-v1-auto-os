@@ -1,6 +1,6 @@
 # GitHub 管理建议
 
-用户已选择新建独立 **公开** 仓库 `hyspace/keychron-v1-auto-os`，而不是 fork 整个 QMK。
+已创建并推送独立 **公开** 仓库 [hyspace/keychron-v1-auto-os](https://github.com/hyspace/keychron-v1-auto-os)，而不是 fork 整个 QMK。
 名称限定 V1，README 进一步明确只支持 ANSI 旋钮版。
 可编辑布局公开；原始配置备份、宏、设备序列号和闪存转储仍不提交。
 
@@ -35,4 +35,7 @@ git push -u origin main
 
 `package.json` 的 `private: true` 只防止误发布 npm 包，不表示 GitHub 仓库私有。
 
-本地目录保持原路径，不因远端仓库改名而移动。当前文档中的创建命令只是操作步骤，是否已上传以实际远端状态为准。
+本地目录保持原路径，不因远端仓库改名而移动；`origin` 已指向上述仓库，`main` 已建立上游跟踪。创建命令仅作为初始配置参考，不要重复执行。
+
+首次云端编译、测试和 artifact 打包全部通过：
+https://github.com/hyspace/keychron-v1-auto-os/actions/runs/37195817383

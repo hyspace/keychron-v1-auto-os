@@ -16,7 +16,14 @@
 - 原 QMK checkout 恢复为干净依赖；未删除私人备份。
 - 改用仓库内布局基线/公开定义，不依赖私人备份或 work 下载仓库即可测试。
 - External Userspace 本机编译与已刷入 1.1.1 **二进制完全一致**，所有测试通过。
-- 本次没有再次写设备；GitHub Actions 尚未实际运行，待仓库上传后确认。
+- 本次没有再次写设备。
+
+## 2026-10-04 / 首次 GitHub Actions
+
+- 公开仓库：`hyspace/keychron-v1-auto-os`；构建源码提交 `7924876b6ecb9bf6a7c348388f53bb8a75a6f74b`。
+- [运行 37195817383](https://github.com/hyspace/keychron-v1-auto-os/actions/runs/37195817383) 全部通过：安装依赖、获取固定 QMK、编译 External Userspace、测试、生成文件一致性检查和打包。
+- 已产出固件/VIA 定义/manifest 的 artifact，保留 30 天。云端二进制没有刷入设备，不将其视为新的硬件验收。
+- GitHub 提示现用 action 版本内置 Node 20 已弃用并自动转到 Node 24；本次运行成功，后续可单独升级 action 版本。
 
 ## 以后每版填写
 
