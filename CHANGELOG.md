@@ -2,6 +2,7 @@
 
 ## Repository organization (no firmware behavior change)
 
+- Name the public project `keychron-v1-auto-os`; explicitly limit support to V1 ANSI knob.
 - Move to QMK External Userspace; lock QMK by tag and exact SHA.
 - Keep QMK core/hardware files unmodified. Add build/test CI and provenance packaging.
 - Separate private flash/VIA backups and scratch downloads from publishable source.

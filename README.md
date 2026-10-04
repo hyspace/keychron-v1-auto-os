@@ -1,5 +1,7 @@
 # Keychron V1 Auto OS
 
+公开项目名称：`keychron-v1-auto-os`。**目前仅适配 Keychron V1 ANSI 旋钮版**，不是全系列通用固件。
+
 让 Keychron V1 在显示器 KVM 切换主机后自动选择 Mac/Win 布局，保留 VIA、自定义键位、旋钮和原厂 Custom 键功能。
 
 **当前已验收固件：1.1.1；基于 QMK 0.34.6。** QMK 核心和硬件驱动零修改，使用官方 **External Userspace** 管理约 236 行自定义 keymap 文件，不需要维护 QMK fork。
@@ -45,7 +47,7 @@ bash scripts/test.sh
 - [更新 QMK](docs/updating-qmk.md)：获取上游版本、处理兼容性、验收与回退。
 - [刷机与恢复](docs/flashing.md)：手动 DFU、备份、读回校验。
 - [测试记录](docs/testing.md)：已证实结果与尚未覆盖项目。
-- [GitHub 管理](docs/github.md)：私有仓库、上传检查、分支/tag/Release。
+- [GitHub 管理](docs/github.md)：公开仓库、上传检查、分支/tag/Release。
 - [VIA 使用](via/README.md) / [改动历史](CHANGELOG.md)。
 
 ## 仓库与本地资料
@@ -54,9 +56,9 @@ bash scripts/test.sh
 keyboards/   我们的固件源代码（唯一编辑入口）
 data/        上游锁定、公开厂商定义、经评审的键位基线
 scripts/     构建、校验、备份/诊断工具
-tests/      行为/兼容性测试与脱敏历史布局 fixture
+tests/       行为/兼容性测试与脱敏历史布局 fixture
 via/         配套定义与说明
-docs/       需求、设计、升级、验收文档
+docs/        需求、设计、升级、验收文档
 ```
 
 `qmk_firmware/`、`backups/`、`work/`、`qmk-v1-research/`、`.venv/`、`node_modules/`、`dist/` 仅本地保留并忽略。原来的研究资料及硬件回退备份没有删除。

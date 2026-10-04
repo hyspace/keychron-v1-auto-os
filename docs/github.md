@@ -1,7 +1,8 @@
 # GitHub 管理建议
 
-建议新建独立 **私有** 仓库 `hyspace/keyboard-os-detect`，而不是 fork 整个 QMK。
-私人配置备份不会被提交，但可编辑键位本身属于你的布局，公开前也应确认。
+用户已选择新建独立 **公开** 仓库 `hyspace/keychron-v1-auto-os`，而不是 fork 整个 QMK。
+名称限定 V1，README 进一步明确只支持 ANSI 旋钮版。
+可编辑布局公开；原始配置备份、宏、设备序列号和闪存转储仍不提交。
 
 ## 上传前
 
@@ -18,7 +19,7 @@ git diff --cached --stat
 确认仓库名和可见性后，可用已经登录的 GitHub CLI：
 
 ```sh
-gh repo create hyspace/keyboard-os-detect --private --source=. --remote=origin
+gh repo create hyspace/keychron-v1-auto-os --public --source=. --remote=origin --description "Automatic Mac/Windows/Linux layout switching for Keychron V1 ANSI knob via QMK External Userspace"
 git push -u origin main
 ```
 
@@ -32,4 +33,6 @@ git push -u origin main
 - 上游 QMK 始终由 `data/upstream.lock.json` 决定；GitHub 的“Sync fork”不是升级入口。
 - 本地设备备份另作加密备份，不以 GitHub 代替它。
 
-GitHub 凭据经本机 CLI 检查可用；当前文档中的创建命令只是操作步骤，是否已上传以实际远端状态为准。
+`package.json` 的 `private: true` 只防止误发布 npm 包，不表示 GitHub 仓库私有。
+
+本地目录保持原路径，不因远端仓库改名而移动。当前文档中的创建命令只是操作步骤，是否已上传以实际远端状态为准。
