@@ -1,0 +1,13 @@
+{
+  "name": "keyboard-os-detect-tools",
+  "private": true,
+  "version": "1.1.1",
+  "description": "Local VIA definition validation only",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "validate:via": "node scripts/validate_via.cjs"
+  },
+  "devDependencies": {
+    "@the-via/reader": "1.14.4"
+  }
+}

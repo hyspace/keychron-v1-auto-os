@@ -1,0 +1,21 @@
+// Validate with the same reader library used by VIA; no hardware access.
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const reader = require('@the-via/reader');
+const version = fs.readFileSync(path.join(root, 'VERSION'), 'utf8').trim();
+const definition = JSON.parse(fs.readFileSync(path.join(root, `via/keychron-v1-auto-os-v${version}.json`)));
+const parsed = reader.keyboardDefinitionV3ToVIADefinitionV3(definition);
+assert.equal(parsed.vendorProductId, 0x34340311);
+const packedVersion = version.split('.').reduce((v, part) => (v << 8) | Number(part), 0);
+assert.equal(parsed.firmwareVersion, packedVersion);
+assert.equal(parsed.customKeycodes.length, 11);
+assert.deepEqual(parsed.keycodes, ['qmk_rgb_matrix_keycodes']);
+assert.equal(parsed.layouts.keys.length, 82);
+const coords = new Set(parsed.layouts.keys.map(k => `${k.row},${k.col}`));
+assert.equal(coords.size, 82);
+const qmkInfo = JSON.parse(fs.readFileSync(path.join(root, 'qmk_firmware/keyboards/keychron/v1/ansi_encoder/keyboard.json')));
+const qmkCoords = new Set(qmkInfo.layouts.LAYOUT_ansi_82.layout.map(k => k.matrix.join(',')));
+assert.deepEqual(coords, qmkCoords);
+console.log('PASS: official VIA v3 schema, menus, 11 Custom items and all 82 physical positions');

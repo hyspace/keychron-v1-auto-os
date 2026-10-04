@@ -1,0 +1,9 @@
+{
+  "userspace_version": "1.1",
+  "build_targets": [
+    [
+      "keychron/v1/ansi_encoder",
+      "auto_os"
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/qmk/qmk_firmware.git",
+  "tag": "0.34.6",
+  "commit": "d9f6dd215f2c4d295c6ad85b1f602125c2d81db1",
+  "submodules": [
+    "lib/chibios",
+    "lib/chibios-contrib",
+    "lib/lufa",
+    "lib/printf"
+  ]
+}

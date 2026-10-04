@@ -1,0 +1,51 @@
+name: Build and test firmware
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  firmware:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi dfu-util libhidapi-hidraw0 clang make
+          python -m venv .venv
+          .venv/bin/pip install -r requirements.lock
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Fetch the pinned QMK source
+        run: .venv/bin/python scripts/setup_qmk.py
+      - name: Build external userspace
+        run: bash scripts/build.sh
+      - name: Test and check generated files
+        run: |
+          bash scripts/test.sh
+          git diff --exit-code
+      - name: Package firmware and VIA definition
+        run: |
+          source scripts/env.sh
+          python scripts/package_release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ github.sha }}
+          path: dist/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: validation-logs
+          path: work/*.log
+          retention-days: 7

@@ -1,0 +1,19 @@
+# Upstream checkout and local tools are dependencies, not our source.
+/qmk_firmware/
+/.venv/
+/node_modules/
+
+# Device backups can contain macros, serial numbers and private configuration.
+/backups/
+/work/
+/qmk-v1-research/
+/dist/
+/*.bin
+/*.hex
+/*.uf2
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+!.env.example

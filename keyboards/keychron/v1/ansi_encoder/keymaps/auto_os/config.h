@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+#pragma once
+
+#define OS_DETECTION_KEYBOARD_RESET
+#define OS_DETECTION_SINGLE_REPORT
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
+#define VIA_FIRMWARE_VERSION 0x00010101
